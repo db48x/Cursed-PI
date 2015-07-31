@@ -1,7 +1,7 @@
 
 local obj = util.table.deepcopy(data.raw["technology"]["steel-processing"])
 obj.name = "cursed-basic-automation"
-obj.enabled = true
+obj.upgrade = true
 obj.icon = "__Cursed-PI__/graphics/icons/basic-inserter/cursed-basic-inserter.png"
 obj.effects = {}
 obj.effects[1] = { type = "unlock-recipe", recipe = "cursed-burner-inserter" }
@@ -11,7 +11,7 @@ data.raw[obj.type][obj.name] = obj
 
 local obj = util.table.deepcopy(data.raw["technology"]["automation"])
 obj.name = "cursed-automation"
-obj.enabled = false
+obj.upgrade = true
 obj.icon = "__Cursed-PI__/graphics/icons/long-handed-inserter/cursed-long-handed-inserter.png"
 obj.effects = {}
 obj.effects[2] = { type = "unlock-recipe", recipe = "cursed-long-handed-inserter" }
@@ -20,7 +20,7 @@ data.raw[obj.type][obj.name] = obj
 
 local obj = util.table.deepcopy(data.raw["technology"]["electronics"])
 obj.name = "cursed-electronics"
-obj.enabled = false
+obj.upgrade = true
 obj.icon = "__Cursed-PI__/graphics/icons/smart-inserter/cursed-smart-inserter.png"
 obj.effects = {}
 obj.effects[1] = { type = "unlock-recipe", recipe = "cursed-smart-inserter" }
@@ -29,7 +29,7 @@ data.raw[obj.type][obj.name] = obj
 
 local obj = util.table.deepcopy(data.raw["technology"]["logistics"])
 obj.name = "cursed-logistics"
-obj.enabled = false
+obj.upgrade = true
 obj.icon = "__Cursed-PI__/graphics/icons/fast-inserter/cursed-fast-inserter.png"
 obj.effects = {}
 obj.effects[1] = { type = "unlock-recipe", recipe = "cursed-fast-inserter" }

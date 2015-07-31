@@ -18,7 +18,6 @@ game.on_init(function()
 	end
 end)
 
-
 game.on_event(defines.events.on_built_entity, function(event)
 	if event.created_entity.name == "cursed-burner-inserter" then
 		showGui(event)
