@@ -164,8 +164,8 @@ function showGuiAssembler(event)
 	
 	local del = true
 	for k,v in pairs(global.cursedPIconfig) do
-		if player.force.recipes[k.recipe].enabled == true then
-			tablePA.add({ type="button", name="datosPA_" .. k.recipe, caption = {"entity-name." .. v.entity},style="cursed-PI-button" })
+		if player.force.recipes[v.recipe].enabled == true then
+			tablePA.add({ type="button", name="datosPA_" .. v.recipe, caption = {"entity-name." .. v.entity},style="cursed-PI-button" })
 			del = false
 		end
 	end
@@ -198,10 +198,10 @@ function fillGlobal()
 		global.cursedPIconfig =
 		{
 			["cursed-burner-inserter"] = { ["entity"] = "cursed-burner-inserter", ["recipe"] = "cursed-burner-inserter" },
-			["cursed-basic-inserter"] = { ["entity"] = "cursed-basic-inserter", ["out"] = "cursed-basic-inserter" },
-			["cursed-long-handed-inserter"] = { ["entity"] = "cursed-long-handed-inserter", ["out"] = "cursed-long-handed-inserter" },
-			["cursed-smart-inserter"] = { ["entity"] = "cursed-smart-inserter", ["out"] = "cursed-smart-inserter" },
-			["cursed-fast-inserter"] = { ["entity"] = "cursed-fast-inserter", ["out"] = "cursed-fast-inserter" }
+			["cursed-basic-inserter"] = { ["entity"] = "cursed-basic-inserter", ["recipe"] = "cursed-basic-inserter" },
+			["cursed-long-handed-inserter"] = { ["entity"] = "cursed-long-handed-inserter", ["recipe"] = "cursed-long-handed-inserter" },
+			["cursed-smart-inserter"] = { ["entity"] = "cursed-smart-inserter", ["recipe"] = "cursed-smart-inserter" },
+			["cursed-fast-inserter"] = { ["entity"] = "cursed-fast-inserter", ["recipe"] = "cursed-fast-inserter" }
 		}
 	end
 end
@@ -215,3 +215,19 @@ function valButtons(event)
 	end
 end
 
+
+remote.add_interface("Cursed-PI",
+{
+addInserter = function(inserter)
+	if inserter == nil then
+		return "inserter nil"
+	elseif inserter.name == nil then
+		return "inserter.name nil"
+	elseif inserter.entity == nil then
+		return "inserter.entity nil"
+	elseif inserter.recipe == nil then
+		return "inserter.recipe nil"
+	end
+	global.cursedPIconfig[inserter.name] = { ["entity"] = inserter.entity, ["recipe"] = inserter.recipe }
+end,
+})
