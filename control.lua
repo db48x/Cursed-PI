@@ -14,7 +14,7 @@ local posOut =
 }
 local dir = { 0,0,2,6,5,2,6,4,4 }
 
-game.on_init(function()
+script.on_init(function()
 	for k,force in pairs(game.forces) do
 		if force.technologies["automation"].researched == true then
 			force.technologies["cursed-automation"].enabled = true
@@ -29,12 +29,11 @@ game.on_init(function()
 	fillGlobal()
 end)
 
-
-game.on_load(function()
+script.on_load(function()
 	fillGlobal()
 end)
 
-game.on_event(defines.events.on_built_entity, function(event)
+script.on_event(defines.events.on_built_entity, function(event)
 	if event.created_entity.name == "cursed-pa" then
 		if game.get_player(event.player_index).selected ~= nil and game.get_player(event.player_index).selected.type == "assembling-machine" then
 			showGuiAssembler(event)
@@ -48,7 +47,7 @@ game.on_event(defines.events.on_built_entity, function(event)
 end)
 
 
-game.on_event(defines.events.on_gui_click, function(event)
+script.on_event(defines.events.on_gui_click, function(event)
 	if string.sub(event.element.name,1,8) == "datosPI_" then
 		if event.element.parent.name == "tablePI1" or event.element.parent.name == "tablePI2" then
 			valButtons(event)
